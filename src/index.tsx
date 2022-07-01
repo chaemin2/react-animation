@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
@@ -62,48 +62,24 @@ table {
 body {
   font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
-  background-color:${props => props.theme.bgColor};
   color:black;
   line-height: 1.2;
+  background:linear-gradient(135deg,#e09,#d0e);
 }
 a {
   text-decoration:none;
   color:inherit;
 }
-/* Medium Devices, Desktops Only */
-
-	::-webkit-scrollbar {
-		width: 10px;
-		height: 10px;
-		background-color: rgba(0, 0, 0, 0.06);
-	}
-
-	::-webkit-scrollbar:hover {
-		width: 10px;
-		height: 10px;
-		background-color: rgba(0, 0, 0, 0.09);
-	}
-
-	::-webkit-scrollbar-thumb {
-		border: 2px solid transparent;
-		border-radius: 20px;
-		background-color: #73bbfb; 
-	}
-
-	::-webkit-scrollbar-thumb:active {
-		border-radius: 20px;
-	}
-
 `;
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-	// <React.StrictMode>
-	<RecoilRoot>
-		<ThemeProvider theme={darkTheme}>
-			<GlobalStyle />
-			<App />
-		</ThemeProvider>
-	</RecoilRoot>
-	// </React.StrictMode>
+ReactDOM.render(
+	<React.StrictMode>
+		<RecoilRoot>
+			<ThemeProvider theme={darkTheme}>
+				<GlobalStyle />
+				<App />
+			</ThemeProvider>
+		</RecoilRoot>
+	</React.StrictMode>,
+	document.getElementById('root')
 );
